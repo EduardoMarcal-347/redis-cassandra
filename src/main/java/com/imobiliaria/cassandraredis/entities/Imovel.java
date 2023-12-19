@@ -1,15 +1,14 @@
 package com.imobiliaria.cassandraredis.entities;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.UUID;
-
-@Table()
+@Document(collection = "imovel")
 public class Imovel {
 
-    @PrimaryKey
-    private UUID id;
+    @Id
+    private ObjectId id;
 
     private String endereco;
     private String tipoImovel;
@@ -26,7 +25,7 @@ public class Imovel {
         this.preco = preco;
     }
 
-    public Imovel(UUID id, String endereco, String tipoImovel, Double area, Double preco) {
+    public Imovel(ObjectId id, String endereco, String tipoImovel, Double area, Double preco) {
         this.id = id;
         this.endereco = endereco;
         this.tipoImovel = tipoImovel;
@@ -34,11 +33,11 @@ public class Imovel {
         this.preco = preco;
     }
 
-    public UUID getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
